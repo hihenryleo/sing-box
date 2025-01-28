@@ -251,7 +251,7 @@
             }
           ],
           "outbound": "china"
-        },
+        }
       ],
       "rule_set": [
         {
