@@ -235,13 +235,23 @@
           "outbound": "microsoft"
         },
         {
-          "rule_set": "geosite-geolocation-!cn",
-          "outbound": "master"
-        },
-        {
           "rule_set": ["geoip-cn", "geosite-cn"],
           "outbound": "china"
-        }
+        },
+        {
+          "type": "logical",
+          "mode": "and",
+          "rules": [
+            {
+              "rule_set": "geosite-geolocation-!cn",
+              "invert": true
+            },
+            {
+              "rule_set": "geoip-cn"
+            }
+          ],
+          "outbound": "china"
+        },
       ],
       "rule_set": [
         {
@@ -295,4 +305,4 @@
         }
       ]
     }
-  }
+}
