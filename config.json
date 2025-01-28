@@ -69,8 +69,7 @@
               "rule_set": "geoip-cn"
             }
           ],
-          "server": "google",
-          "client_subnet": "114.114.114.114/24"
+          "server": "google"
         }, 
         {
           "query_type": [
@@ -81,6 +80,7 @@
         }
       ],
       "independent_cache": true,
+      "client_subnet": "114.114.114.114/24",
       "strategy": "prefer_ipv4"
     },
     "inbounds": [
@@ -117,33 +117,6 @@
           "tw",
           "all-proxies",
           "direct"
-        ]
-      },
-      {
-        "tag":"apple",
-        "type":"selector",
-        "outbounds":[
-          "direct",
-          "tw",
-          "all-proxies"
-        ]
-      },
-      {
-        "tag":"microsoft",
-        "type":"selector",
-        "outbounds":[
-          "direct",
-          "tw",
-          "all-proxies"
-        ]
-      },
-      {
-        "tag":"china",
-        "type":"selector",
-        "outbounds":[
-          "direct",
-          "tw",
-          "all-proxies"
         ]
       },
       {
@@ -196,16 +169,6 @@
           "action": "hijack-dns"
         },
         {
-          "rule_set": "geosite-category-ads-all",
-          "clash_mode": "rule",
-          "action": "reject"
-        },
-        {
-          "rule_set": "geosite-category-ads-all",
-          "clash_mode": "global",
-          "outbound": "master"
-        },
-        {
           "clash_mode": "direct",
           "outbound": "direct"
         },
@@ -214,29 +177,12 @@
           "outbound": "master"
         },
         {
-          "domain": [
-            "clash.razord.top",
-            "yacd.metacubex.one",
-            "yacd.haishan.me",
-            "d.metacubex.one"
-          ],
-          "outbound": "direct"
-        },
-        {
           "ip_is_private": true,
           "outbound": "direct"
         },
         {
-          "rule_set": ["geoip-apple", "geosite-apple"],
-          "outbound": "apple"
-        },
-        {
-          "rule_set": "geosite-microsoft",
-          "outbound": "microsoft"
-        },
-        {
           "rule_set": ["geoip-cn", "geosite-cn"],
-          "outbound": "china"
+          "outbound": "direct"
         },
         {
           "type": "logical",
@@ -250,38 +196,10 @@
               "rule_set": "geoip-cn"
             }
           ],
-          "outbound": "china"
+          "outbound": "direct"
         }
       ],
       "rule_set": [
-        {
-          "tag": "geosite-category-ads-all",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-apple",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-apple",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-microsoft",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
-          "download_detour": "direct"
-        },
         {
           "tag": "geosite-geolocation-!cn",
           "type": "remote",
