@@ -148,7 +148,7 @@
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/hihenryleo/sing-box/refs/heads/main/geoip/cn.srs",
         "download_detour": "direct"
       },
       {
