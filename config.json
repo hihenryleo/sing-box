@@ -43,6 +43,10 @@
         "action": "reject"
       },
       {
+        "rule_set": "geosite-spotify",
+        "server": "google"
+      },
+      {
         "rule_set": "geosite-cn",
         "server": "local"
       },
