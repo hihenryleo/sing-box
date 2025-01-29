@@ -1,226 +1,218 @@
 {
-    "log": {
-      "level": "info",
-      "timestamp": true
+  "log": {
+    "disabled": true,
+    "level": "info"
+  },
+  "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
     },
-    "experimental": {
-      "clash_api": {
-        "external_controller": "127.0.0.1:9090",
-        "external_ui": "ui",
-        "secret": "sing-box",
-        "external_ui_download_url": "https://ghproxy.cn/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-        "external_ui_download_detour": "direct",
-        "default_mode": "rule"
+    "servers": [
+      {
+        "tag": "google",
+        "address": "tls://8.8.8.8",
+        "detour": "master"
       },
+      {
+        "tag": "local",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "fakeip",
+        "address": "fakeip"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "local"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "local"
+      },
+      {
+        "clash_mode": "global",
+        "server": "google"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "local"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "google"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
+      }
+    ],
+    "independent_cache": true,
+    "client_subnet": "114.114.114.114/24",
+    "strategy": "prefer_ipv4"
+  },
+  "route": {
+    "auto_detect_interface": true,
+    "final": "master",
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "master"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+        "download_detour": "direct"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "interface_name": "sing-box",
+      "address": [
+        "172.19.0.0/30",
+        "fdfe:dcba:9876::0/126"
+      ],
+      "exclude_package": [
+        "com.vivo.pcsuite"
+      ],
+      "auto_route": true,
+      "strict_route": true
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "master",
+      "type": "selector",
+      "outbounds": [
+        "tw",
+        "all-proxies",
+        "direct"
+      ]
+    },
+    {
+      "tag": "tw",
+      "type": "urltest",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"
+          ]
+        }
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "tag": "all-proxies",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "网站|地址|剩余|过期|时间|有效"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "secret": "sing-box",
+      "external_ui_download_url": "https://ghproxy.cn/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "default_mode": "rule"
+    },
     "cache_file": {
       "enabled": true,
       "store_fakeip": true,
       "store_rdrc": true
-      }
-    },
-    "dns": {
-      "fakeip": {
-        "enabled": true,
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
-      },
-      "servers": [
-        {
-          "tag": "google",
-          "address": "tls://8.8.8.8",
-          "detour": "master"
-        },
-        {
-          "tag": "local",
-          "address": "https://223.5.5.5/dns-query",
-          "detour": "direct"
-        },
-        {
-          "tag": "fakeip",
-          "address": "fakeip"
-        }
-      ],
-      "rules": [
-        {
-          "outbound": "any",
-          "server": "local"
-        },
-        {
-          "clash_mode": "direct",
-          "server": "local"
-        },
-        {
-          "clash_mode": "global",
-          "server": "google"
-        },
-        {
-          "rule_set": "geosite-cn",
-          "server": "local"
-        },
-        {
-          "type": "logical",
-          "mode": "and",
-          "rules": [
-            {
-              "rule_set": "geosite-geolocation-!cn",
-              "invert": true
-            },
-            {
-              "rule_set": "geoip-cn"
-            }
-          ],
-          "server": "google"
-        }, 
-        {
-          "query_type": [
-            "A",
-            "AAAA"
-          ],
-          "server": "fakeip"
-        }
-      ],
-      "independent_cache": true,
-      "client_subnet": "114.114.114.114/24",
-      "strategy": "prefer_ipv4"
-    },
-    "inbounds": [
-      {
-        "tag": "tun-in",
-        "type": "tun",
-        "address": [
-          "172.19.0.0/30",
-          "fdfe:dcba:9876::0/126"
-        ],
-        "stack": "system",
-        "auto_route": true,
-        "strict_route": true,
-        "platform": {
-          "http_proxy": {
-            "enabled": true,
-            "server": "127.0.0.1",
-            "server_port": 7890
-          }
-        }
-      },
-      {
-        "tag": "mixed-in",
-        "type": "mixed",
-        "listen": "127.0.0.1",
-        "listen_port": 7890
-      }
-    ],
-    "outbounds": [
-      {
-        "tag":"master",
-        "type":"selector",
-        "outbounds":[
-          "tw",
-          "all-proxies",
-          "direct"
-        ]
-      },
-      {
-        "tag":"tw",
-        "type":"urltest",
-        "outbounds":[
-          "{all}"
-        ],
-        "filter":[
-          {"action":"include","keywords":["🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"]}
-        ],
-        "url": "http://www.gstatic.com/generate_204",
-        "interval": "10m",
-        "tolerance": 50
-      },
-      {
-        "tag":"all-proxies",
-        "type":"selector",
-        "outbounds":[
-          "{all}"
-        ],
-        "filter":[
-          {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效"]}
-        ]
-      },
-      {
-        "type": "direct",
-        "tag": "direct"
-      }
-    ],
-    "route": {
-      "auto_detect_interface": true,
-      "final": "master",
-      "rules": [
-        {
-          "inbound": ["tun-in", "mixed-in"],
-          "action": "sniff"
-        },
-        {
-          "type": "logical",
-          "mode": "or",
-          "rules":[
-            {
-              "port":53
-            },
-            {
-              "protocol": "dns"
-            }
-          ],
-          "action": "hijack-dns"
-        },
-        {
-          "clash_mode": "direct",
-          "outbound": "direct"
-        },
-        {
-          "clash_mode": "global",
-          "outbound": "master"
-        },
-        {
-          "ip_is_private": true,
-          "outbound": "direct"
-        },
-        {
-          "rule_set": ["geoip-cn", "geosite-cn"],
-          "outbound": "direct"
-        },
-        {
-          "type": "logical",
-          "mode": "and",
-          "rules": [
-            {
-              "rule_set": "geosite-geolocation-!cn",
-              "invert": true
-            },
-            {
-              "rule_set": "geoip-cn"
-            }
-          ],
-          "outbound": "direct"
-        }
-      ],
-      "rule_set": [
-        {
-          "tag": "geosite-geolocation-!cn",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-cn",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-cn",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
-          "download_detour": "direct"
-        }
-      ]
     }
+  }
 }
