@@ -39,6 +39,10 @@
         "server": "google"
       },
       {
+        "clash_mode": "reject",
+        "action": "reject"
+      },
+      {
         "rule_set": "geosite-cn",
         "server": "local"
       },
@@ -88,8 +92,16 @@
         "outbound": "master"
       },
       {
+        "clash_mode": "reject",
+        "action": "reject"
+      },
+      {
         "ip_is_private": true,
         "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-spotify",
+        "outbound": "spotify"
       },
       {
         "rule_set": [
@@ -114,6 +126,13 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/spotify.srs",
+        "download_detour": "direct"
+      },
       {
         "tag": "geosite-geolocation-!cn",
         "type": "remote",
@@ -193,6 +212,15 @@
             "网站|地址|剩余|过期|时间|有效"
           ]
         }
+      ]
+    },
+    {
+      "tag": "spotify",
+      "type": "selector",
+      "outbounds": [
+        "tw",
+        "all-proxies",
+        "direct"
       ]
     },
     {
