@@ -130,7 +130,7 @@
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/hihenryleo/sing-box/main/geoip/cn.srs",
         "download_detour": "direct"
       },
       {
