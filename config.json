@@ -148,7 +148,9 @@
       "interface_name": "sing-box",
       "address": "172.19.0.0/30",
       "exclude_package": [
-        "com.vivo.pcsuite"
+        "com.vivo.pcsuite",
+        "com.vivo.share",
+        "com.vivo.easyshare"
       ],
       "auto_route": true,
       "strict_route": true
