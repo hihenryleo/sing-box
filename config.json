@@ -147,11 +147,7 @@
       "type": "tun",
       "interface_name": "sing-box",
       "address": "172.19.0.0/30",
-      "exclude_package": [
-        "com.vivo.pcsuite",
-        "com.vivo.share",
-        "com.vivo.easyshare"
-      ],
+      "include_package": "com.microsoft.emmx",
       "auto_route": true,
       "strict_route": true
     }
@@ -161,13 +157,13 @@
       "tag": "master",
       "type": "selector",
       "outbounds": [
-        "tw",
+        "hk",
         "all-proxies",
         "direct"
       ]
     },
     {
-      "tag": "tw",
+      "tag": "hk",
       "type": "urltest",
       "outbounds": [
         "{all}"
@@ -176,7 +172,7 @@
         {
           "action": "include",
           "keywords": [
-            "🇹🇼|TW|tw|台湾|臺灣|台|Taiwan"
+            "(?i)港|hk|hongkong|hong kong"
           ]
         }
       ],
@@ -203,7 +199,7 @@
       "tag": "spotify",
       "type": "selector",
       "outbounds": [
-        "tw",
+        "hk",
         "all-proxies",
         "direct"
       ]
