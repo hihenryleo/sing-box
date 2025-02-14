@@ -147,7 +147,13 @@
       "type": "tun",
       "interface_name": "sing-box",
       "address": "172.19.0.0/30",
-      "include_package": "com.microsoft.emmx",
+      "exclude_package": [
+        "com.vivo.connbase",
+        "com.vivo.easyshare",
+        "com.vivo.pcsuite",
+        "com.vivo.share",
+        "org.videolan.vlc"
+      ],
       "auto_route": true,
       "strict_route": true
     }
