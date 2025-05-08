@@ -42,6 +42,10 @@
         "action": "reject"
       },
       {
+        "rule_set": "geosite-apple-cn",
+        "server": "local"
+      },
+      {
         "rule_set": "geosite-spotify",
         "server": "google"
       },
@@ -100,6 +104,10 @@
         "outbound": "direct"
       },
       {
+        "rule_set": "geosite-apple-cn",
+        "outbound": "direct"
+      },
+      {
         "rule_set": "geosite-spotify",
         "outbound": "spotify"
       },
@@ -112,6 +120,13 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "geosite-apple-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple-cn.srs",
+        "download_detour": "direct"
+      },
       {
         "tag": "geosite-spotify",
         "type": "remote",
