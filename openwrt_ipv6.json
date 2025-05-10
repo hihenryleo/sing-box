@@ -43,11 +43,12 @@
         "action": "reject"
       },
       {
-        "rule_set": "geosite-apple-cn",
-        "server": "local"
-      },
-      {
-        "rule_set": "geosite-spotify",
+        "rule_set": [
+          "geosite-microsoft",
+          "geosite-steam",
+          "geosite-apple",
+          "geosite-spotify"
+        ],
         "server": "google"
       },
       {
@@ -108,8 +109,16 @@
         "outbound": "direct"
       },
       {
-        "rule_set": "geosite-apple-cn",
-        "outbound": "direct"
+        "rule_set": "geosite-microsoft",
+        "outbound": "microsoft"
+      },
+      {
+        "rule_set": "geosite-steam",
+        "outbound": "steam"
+      },
+      {
+        "rule_set": "geosite-apple",
+        "outbound": "apple"
       },
       {
         "rule_set": "geosite-spotify",
@@ -125,10 +134,24 @@
     ],
     "rule_set": [
       {
-        "tag": "geosite-apple-cn",
+        "tag": "geosite-microsoft",
         "type": "remote",
         "format": "binary",
-        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple-cn.srs",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-steam",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
         "download_detour": "direct"
       },
       {
@@ -219,6 +242,33 @@
     },
     {
       "tag": "spotify",
+      "type": "selector",
+      "outbounds": [
+        "hk",
+        "all-proxies",
+        "direct"
+      ]
+    },
+    {
+      "tag": "microsoft",
+      "type": "selector",
+      "outbounds": [
+        "hk",
+        "all-proxies",
+        "direct"
+      ]
+    },
+    {
+      "tag": "steam",
+      "type": "selector",
+      "outbounds": [
+        "hk",
+        "all-proxies",
+        "direct"
+      ]
+    },
+    {
+      "tag": "apple",
       "type": "selector",
       "outbounds": [
         "hk",
