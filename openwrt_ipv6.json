@@ -44,6 +44,7 @@
       },
       {
         "rule_set": [
+          "geosite-google",
           "geosite-microsoft",
           "geosite-steam",
           "geosite-apple",
@@ -110,6 +111,10 @@
         "outbound": "direct"
       },
       {
+        "rule_set": "geosite-google",
+        "outbound": "google"
+      },
+      {
         "rule_set": "geosite-microsoft",
         "outbound": "microsoft"
       },
@@ -134,6 +139,13 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "geosite-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghproxy.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+        "download_detour": "direct"
+      },
       {
         "tag": "geosite-microsoft",
         "type": "remote",
@@ -243,6 +255,15 @@
     },
     {
       "tag": "spotify",
+      "type": "selector",
+      "outbounds": [
+        "hk",
+        "all-proxies",
+        "direct"
+      ]
+    },
+    {
+      "tag": "google",
       "type": "selector",
       "outbounds": [
         "hk",
