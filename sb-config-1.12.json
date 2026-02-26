@@ -121,8 +121,7 @@
         "HongKong_Auto",
         "America_Auto",
         "All",
-        "direct",
-        "{all}"
+        "direct"
       ]
     },
     {
@@ -149,7 +148,8 @@
       "outbounds":[
         "direct",
         "HongKong_Auto",
-        "America_Auto"
+        "America_Auto",
+        "All"
       ]
     },
     {
@@ -210,8 +210,7 @@
         "direct",
         "HongKong_Auto",
         "America_Auto",
-        "All",
-        "Proxy"
+        "All"
       ]
     },
     {
