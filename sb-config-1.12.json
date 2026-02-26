@@ -89,6 +89,7 @@
     {
       "tag": "tun-in",
       "type": "tun",
+      "interface_name": "tun0-sing-box",
       "address": [
         "172.19.0.0/30",
         "fdfe:dcba:9876::0/126"
@@ -195,6 +196,7 @@
       "tag":"Global",
       "type":"selector",
       "outbounds":[ 
+        "Proxy",
         "HongKong_Auto",
         "America_Auto",
         "All",
@@ -206,6 +208,9 @@
       "type":"selector",
       "outbounds":[
         "direct",
+        "HongKong_Auto",
+        "America_Auto",
+        "All",
         "Proxy"
       ]
     },
@@ -224,7 +229,7 @@
     },
     {
       "tag":"America_Auto",
-      "type":"selector",
+      "type":"urltest",
       "outbounds":[
         "{all}"
       ],
