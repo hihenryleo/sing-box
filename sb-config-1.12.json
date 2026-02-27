@@ -172,6 +172,16 @@
       ]
     },
     {
+      "tag":"Steamcn",
+      "type":"selector",
+      "outbounds":[
+        "direct",
+        "HongKong_Auto",
+        "America_Auto",
+        "All"
+      ]
+    },
+    {
       "tag":"Github",
       "type":"selector",
       "outbounds":[
@@ -326,6 +336,10 @@
         "outbound": "Apple"
       },
       {
+        "rule_set": "geosite-steamcn",
+        "outbound": "Steamcn"
+      },
+      {
         "rule_set": "geosite-github",
         "outbound": "Github"
       },
@@ -397,6 +411,13 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-steamcn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/steam@cn.srs",
         "download_detour": "direct"
       },
       {
