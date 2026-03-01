@@ -99,7 +99,7 @@
       "route_exclude_address": "192.168.0.0/16",
       "platform": {
         "http_proxy": {
-          "enabled": true,
+          "enabled": false,
           "server": "127.0.0.1",
           "server_port": 7890
         }
@@ -148,16 +148,6 @@
         "direct",
         "HongKong_Auto",
         "America_Auto",
-        "All"
-      ]
-    },
-    {
-      "tag":"Spotify",
-      "type":"selector",
-      "outbounds":[
-        "HongKong_Auto",
-        "America_Auto",
-        "direct",
         "All"
       ]
     },
@@ -328,10 +318,6 @@
         "outbound": "BiliBili"
       },
       {
-        "rule_set": "geosite-spotify",
-        "outbound": "Spotify"
-      },
-      {
         "rule_set": ["geoip-apple", "geosite-apple"],
         "outbound": "Apple"
       },
@@ -390,13 +376,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-spotify",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
         "download_detour": "direct"
       },
       {
