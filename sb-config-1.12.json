@@ -263,19 +263,19 @@
       "tag": "reject"
     },
     {
-      "tag": "VLESS-US",
+      "tag": "VLESS-Vision-Reality",
       "type": "vless",
-      "server": "",
+      "server": "147.79.20.99",
       "server_port": 443,
-      "uuid": "",
+      "uuid": "625a08bb-d372-4f7c-a2d4-6a50ca3393ce",
       "tls": {
         "enabled": true,
         "server_name": "updates.cdn-apple.com",
         "insecure": false,
         "reality": {
           "enabled": true,
-          "public_key": "",
-          "short_id": ""
+          "public_key": "2GPEbCh3ZVgGXbwzo1TzCe38JPvMm8HRSxuOuKspKAE",
+          "short_id": "a118b9425a7e2dc5"
         },
         "utls": {
           "enabled": true,
