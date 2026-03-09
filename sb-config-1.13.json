@@ -34,8 +34,7 @@
       {
         "tag": "fakeip",
         "type": "fakeip",
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
+        "inet4_range": "198.18.0.0/15"
       }
     ],
     "rules": [
@@ -90,8 +89,7 @@
       "tag": "tun-in",
       "type": "tun",
       "address": [
-        "172.19.0.0/30",
-        "fdfe:dcba:9876::0/126"
+        "172.19.0.0/30"
       ],
       "stack": "system",
       "auto_route": true,
@@ -117,7 +115,7 @@
       "tag":"Proxy",
       "type":"selector",
       "outbounds":[
-        "VLESS-US",
+        "VLESS_US",
         "HongKong_Auto",
         "America_Auto",
         "All",
@@ -129,7 +127,7 @@
       "tag":"OpenAI",
       "type":"selector",
       "outbounds":[
-        "VLESS-US",
+        "VLESS_US",
         "America_Auto",
         "HongKong_Auto",
         "All"
@@ -139,10 +137,35 @@
       "tag":"Google",
       "type":"selector",
       "outbounds":[
-        "VLESS-US",
+        "VLESS_US",
         "HongKong_Auto",
         "America_Auto",
         "All"
+      ]
+    },
+    {
+      "tag":"Github",
+      "type":"selector",
+      "outbounds":[
+        "VLESS_US",
+        "HongKong_Auto",
+        "America_Auto",
+        "All",
+        "direct",
+        "reject"
+      ]
+    },
+    {
+      "tag":"Global",
+      "type":"selector",
+      "outbounds":[ 
+        "Proxy",
+        "VLESS_US",
+        "HongKong_Auto",
+        "America_Auto",
+        "All",
+        "direct",
+        "reject"
       ]
     },
     {
@@ -176,39 +199,14 @@
       ]
     },
     {
-      "tag":"Github",
-      "type":"selector",
-      "outbounds":[
-        "VLESS-US",
-        "HongKong_Auto",
-        "America_Auto",
-        "All",
-        "direct",
-        "reject"
-      ]
-    },
-    {
       "tag":"Microsoft",
       "type":"selector",
       "outbounds":[
         "direct",
-        "VLESS-US",
+        "VLESS_US",
         "HongKong_Auto",
         "America_Auto",
         "All"
-      ]
-    },
-    {
-      "tag":"Global",
-      "type":"selector",
-      "outbounds":[ 
-        "Proxy",
-        "VLESS-US",
-        "HongKong_Auto",
-        "America_Auto",
-        "All",
-        "direct",
-        "reject"
       ]
     },
     {
@@ -263,7 +261,7 @@
       "tag": "reject"
     },
     {
-      "tag": "VLESS-US",
+      "tag": "VLESS_US",
       "type": "vless",
       "server": "147.79.20.99",
       "server_port": 443,
