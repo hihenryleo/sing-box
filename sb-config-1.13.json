@@ -127,6 +127,7 @@
       "tag":"OpenAI",
       "type":"selector",
       "outbounds":[
+        "Proxy",
         "VLESS_US",
         "America_Auto",
         "HongKong_Auto",
@@ -137,6 +138,7 @@
       "tag":"Google",
       "type":"selector",
       "outbounds":[
+        "Proxy",
         "VLESS_US",
         "HongKong_Auto",
         "America_Auto",
@@ -147,6 +149,7 @@
       "tag":"Github",
       "type":"selector",
       "outbounds":[
+        "Proxy",
         "VLESS_US",
         "HongKong_Auto",
         "America_Auto",
@@ -169,12 +172,23 @@
       ]
     },
     {
+      "tag":"Detour",
+      "type":"selector",
+      "outbounds":[
+        "direct",
+        "HongKong_Auto",
+        "America_Auto",
+        "All"
+      ]
+    },
+    {
       "tag":"BiliBili",
       "type":"selector",
       "outbounds":[
         "direct",
         "HongKong_Auto",
         "America_Auto",
+        "Proxy",
         "All"
       ]
     },
@@ -185,6 +199,7 @@
         "direct",
         "HongKong_Auto",
         "America_Auto",
+        "Proxy",
         "All"
       ]
     },
@@ -193,6 +208,7 @@
       "type":"selector",
       "outbounds":[
         "direct",
+        "Proxy",
         "HongKong_Auto",
         "America_Auto",
         "All"
@@ -206,6 +222,7 @@
         "VLESS_US",
         "HongKong_Auto",
         "America_Auto",
+        "Proxy",
         "All"
       ]
     },
@@ -216,6 +233,7 @@
         "direct",
         "HongKong_Auto",
         "America_Auto",
+        "Proxy",
         "All"
       ]
     },
@@ -263,6 +281,7 @@
     {
       "tag": "VLESS_US",
       "type": "vless",
+      "detour": "Detour",
       "server": "147.79.20.99",
       "server_port": 443,
       "uuid": "625a08bb-d372-4f7c-a2d4-6a50ca3393ce",
