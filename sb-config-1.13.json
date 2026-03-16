@@ -177,10 +177,11 @@
       "tag":"Detour",
       "type":"selector",
       "outbounds":[
-        "direct",
         "HongKong_Auto",
+        "direct",
         "America_Auto",
-        "All"
+        "All",
+        "reject"
       ]
     },
     {
