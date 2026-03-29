@@ -161,6 +161,17 @@
       ]
     },
     {
+      "tag":"Steam",
+      "type":"selector",
+      "outbounds":[
+        "Proxy",
+        "direct",
+        "HongKong_Auto",
+        "America_Auto",
+        "All"
+      ]
+    },
+    {
       "tag":"Global",
       "type":"selector",
       "outbounds":[ 
@@ -203,17 +214,6 @@
         "HongKong_Auto",
         "America_Auto",
         "Proxy",
-        "All"
-      ]
-    },
-    {
-      "tag":"Steamcn",
-      "type":"selector",
-      "outbounds":[
-        "direct",
-        "Proxy",
-        "HongKong_Auto",
-        "America_Auto",
         "All"
       ]
     },
@@ -377,8 +377,8 @@
         "outbound": "Apple"
       },
       {
-        "rule_set": "geosite-steamcn",
-        "outbound": "Steamcn"
+        "rule_set": "geosite-steam",
+        "outbound": "Steam"
       },
       {
         "rule_set": "geosite-github",
@@ -448,10 +448,10 @@
         "download_detour": "direct"
       },
       {
-        "tag": "geosite-steamcn",
+        "tag": "geosite-steam",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/steam@cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/steam.srs",
         "download_detour": "direct"
       },
       {
