@@ -57,7 +57,7 @@
           "geosite-bilibili",
           "geosite-apple",
           "geosite-microsoft",
-          "geosite-cn",
+          "geosite-cn"
         ],
         "server": "fakeip"
       },
@@ -67,7 +67,7 @@
           "geosite-bilibili",
           "geosite-apple",
           "geosite-microsoft",
-          "geosite-cn",
+          "geosite-cn"
         ],
         "server": "local"
       },
