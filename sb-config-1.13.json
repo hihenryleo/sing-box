@@ -52,11 +52,23 @@
           "A",
           "AAAA"
         ],
-        "rule_set": "geosite-cn",
+        "rule_set": [
+          "geosite-steam",
+          "geosite-bilibili",
+          "geosite-apple",
+          "geosite-microsoft",
+          "geosite-cn",
+        ],
         "server": "fakeip"
       },
       {
-        "rule_set": "geosite-cn",
+        "rule_set": [
+          "geosite-steam",
+          "geosite-bilibili",
+          "geosite-apple",
+          "geosite-microsoft",
+          "geosite-cn",
+        ],
         "server": "local"
       },
       {
