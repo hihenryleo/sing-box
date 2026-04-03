@@ -53,11 +53,10 @@
           "AAAA"
         ],
         "rule_set": [
-          "geosite-steam",
-          "geosite-bilibili",
-          "geosite-apple",
-          "geosite-microsoft",
-          "geosite-cn"
+          "geosite-openai",
+          "geosite-google",
+          "geosite-github",
+          "geosite-geolocation-!cn"
         ],
         "server": "fakeip"
       },
