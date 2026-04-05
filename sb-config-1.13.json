@@ -53,10 +53,7 @@
           "AAAA"
         ],
         "rule_set": [
-          "geosite-openai",
-          "geosite-google",
-          "geosite-github",
-          "geosite-geolocation-!cn"
+          "geosite-google"
         ],
         "server": "fakeip"
       },
