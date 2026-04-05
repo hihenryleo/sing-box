@@ -91,6 +91,7 @@
       }
     ],
     "independent_cache": true,
+    "final": "google",
     "strategy": "prefer_ipv4"
   },
   "inbounds": [
