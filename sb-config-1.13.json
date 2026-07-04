@@ -205,6 +205,17 @@
       ]
     },
     {
+      "tag":"Nintendo",
+      "type":"selector",
+      "outbounds":[
+        "direct",
+        "HongKong_Auto",
+        "America_Auto",
+        "Proxy",
+        "All"
+      ]
+    },
+    {
       "tag":"BiliBili",
       "type":"selector",
       "outbounds":[
@@ -386,6 +397,10 @@
         "outbound": "Apple"
       },
       {
+        "rule_set": "geosite-nintendo",
+        "outbound": "Nintendo"
+      },
+      {
         "rule_set": "geosite-steam",
         "outbound": "Steam"
       },
@@ -454,6 +469,13 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-nintendo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/nintendo.srs",
         "download_detour": "direct"
       },
       {
