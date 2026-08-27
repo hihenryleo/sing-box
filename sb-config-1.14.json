@@ -111,7 +111,7 @@
     {"tag": "Github","type": "selector","outbounds": ["Proxy", "HongKong", "United States", "Singapore", "Japan", "Taiwan", "Direct"],"default": "Direct","interrupt_exist_connections": true},
     {"tag": "Microsoft","type": "selector","outbounds": ["Direct","Proxy", "HongKong", "United States", "Singapore", "Japan", "Taiwan"],"default": "United States","interrupt_exist_connections": true},
     {"tag": "Spotify","type": "selector","outbounds": ["Proxy", "Direct", "HongKong", "United States", "Singapore", "Japan", "Taiwan"],"default": "United States","interrupt_exist_connections": true},
-    {"tag": "Steam","type": "selector","outbounds": ["Proxy", "Direct", "HongKong", "United States", "Singapore", "Japan", "Taiwan"],"default": "United States","interrupt_exist_connections": true},,
+    {"tag": "Steam","type": "selector","outbounds": ["Proxy", "Direct", "HongKong", "United States", "Singapore", "Japan", "Taiwan"],"default": "United States","interrupt_exist_connections": true},
     {"tag":"Detour","type":"selector","outbounds":["HongKong", "United States", "Singapore", "Japan", "Taiwan", "Others", "Direct"],"default": "Direct","interrupt_exist_connections": true},
     {"tag": "Epic","type": "selector","outbounds": ["Direct","Proxy", "HongKong", "United States", "Singapore", "Japan", "Taiwan"],"default": "United States","interrupt_exist_connections": true},
     {"tag": "Nintendo","type": "selector","outbounds": ["Direct","Proxy", "HongKong", "United States", "Singapore", "Japan", "Taiwan"],"default": "United States","interrupt_exist_connections": true},
