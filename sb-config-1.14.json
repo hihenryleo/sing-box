@@ -133,6 +133,7 @@
       {"action": "sniff"},
       {"type": "logical","mode": "or","rules":[{"port":53},{"protocol": "dns"}],"action": "hijack-dns"},
       {"clash_mode": "Direct","action": "route","outbound": "Direct"},
+      {"clash_mode": "Global","action": "route","outbound": "Proxy"},
       {"rule_set": ["AppleCN"],"action": "route","outbound": "Direct"},
       {"type": "logical","mode": "and","rules": [{"clash_mode": "AllowAd","invert": true},{"rule_set": ["Reject","Ads_AWAvenue"]}],"action": "reject"},
       {"rule_set": ["Steam"],"action": "route","outbound": "Steam"},
