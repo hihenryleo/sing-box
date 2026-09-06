@@ -65,6 +65,7 @@
       "auto_route": true,
       "strict_route": true,
       "auto_redirect": true
+   }
   ],
   "outbounds": [
     {"tag": "Direct","type": "direct"},
