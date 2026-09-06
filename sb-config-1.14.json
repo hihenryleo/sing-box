@@ -6,9 +6,9 @@
   "experimental": {
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
-      "external_ui": "zashboard",
+      "external_ui": "ui",
       "secret": "sing-box",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "Direct",
       "default_mode": "Rule"
     },
@@ -27,17 +27,7 @@
   ],
   "dns": {
     "servers": [
-      {
-        "tag": "hosts_fix","type": "hosts","predefined": {
-          "dns.alidns.com": ["223.5.5.5","223.6.6.6"],
-          "doh.pub": ["1.12.12.21","120.53.53.53"],
-          "dns.google": ["8.8.8.8","8.8.4.4"],
-          "cloudflare-dns.com": ["104.16.248.249","104.16.249.249"]}
-      },
-      {"tag": "cf-doh","type": "https","server": "cloudflare-dns.com","detour": "Proxy","domain_resolver": "hosts_fix"},
-      {"tag": "gg-doh","type": "https","server": "dns.google","detour": "Proxy","domain_resolver": "hosts_fix"},
-      {"tag": "ali-doh","type": "https","server": "dns.alidns.com","domain_resolver": "hosts_fix"},
-      {"tag": "tx-doh","type": "https","server": "doh.pub","domain_resolver": "hosts_fix"},
+      {"tag": "ali-doh","type": "https","server": "223.6.6.6"},
       {"tag": "ali-udp","type": "udp","server": "223.5.5.5"},
       {"tag": "tx-udp","type": "udp","server": "119.29.29.29"},
       {"tag": "remote","type": "fakeip","inet4_range": "198.18.0.0/15","inet6_range": "fc00::/18"},
@@ -45,7 +35,7 @@
     ],
     "rules": [
       {"rule_set": ["Reject"],"action": "predefined"},
-      {"clash_mode": "Direct","action": "route","server": "local"},
+      {"clash_mode": "Direct","action": "route","server": "ali-udp"},
       {"clash_mode": "Global","action": "route","server": "remote"},
       {"rule_set": ["AppleCN"],"action": "route","server": "ali-doh"},
       {"rule_set": ["Microsoft"],"action": "route","server": "ali-doh"},
@@ -74,21 +64,7 @@
       "stack": "system",
       "auto_route": true,
       "strict_route": true,
-      "auto_redirect": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": false,
-          "server": "127.0.0.1",
-          "server_port": 7890
-        }
-      }
-    },
-    {
-      "tag": "mixed-in",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7890
-    }
+      "auto_redirect": true
   ],
   "outbounds": [
     {"tag": "Direct","type": "direct"},
